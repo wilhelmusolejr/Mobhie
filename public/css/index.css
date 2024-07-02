@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch+Pop&display=swap');
+
+:root {
+    --accent-color: red;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-size: 18px;
+}
+
+main {
+    background-color: #111;
+}
+
+nav {
+    background-color: rgba(1,1,1, 0.1);
+    border-bottom: 1px solid rgba(255,255,255, 0.2);
+}
+nav a {
+    color: white !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav .active {
+    color: var(--accent-color) !important;
+    font-weight: bold;
+}
+
+.navbar-toggler-icon {
+    color: white !important;
+}
+
+.accent-color {
+    color: var(--accent-color) !important;
+}
+
+.logo {
+    font-family: "Rubik Glitch Pop", system-ui;
+    color: white;
+    font-size: 30px;
+}
+
+.user-profile img {
+    width: 50px;
+    height: 50px;
+}
+
+header {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .60) 25%, rgba(0, 0, 0, 0) 100%),
+                linear-gradient(to bottom right, rgba(0, 0, 0, .60) 25%, rgba(0, 0, 0, 0) 100%),
+                url('../images/header-banner.jpg'); /* Replace with your image path */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* Adjust the size to cover the entire header */
+    height: 100vh; /* Set the height of the header */
+    color: white; /* Optional: Set the text color for better contrast */
+    position: relative; /* Ensure it's positioned relative for child elements */
+}
+
+.sponsor > div {
+    width: 40%;
+}
+
+.sponsor img {
+    width: 50%;
+}
+
+.btn-primary {
+    background-color: transparent !important;
+    border: 1px solid white;
+}
+.btn-primary:hover {
+    border: 1px solid red;
+}
+
+
+
+
+.randomize{
+    min-height:60vh;
+}
+.randomize img {
+    height: 100%;
+}
+
+@media (min-width: 960px) {
+    .movie-image {
+        width: 50%;
+        /* max-width: 650px; */
+    }
+}
+
+@media (min-width: 1200px) {
+    .fs-1 {
+        font-size: 6rem !important;
+    }
+}
+
+
+
+footer {
+    border-top: 7px solid var(--accent-color)
+}
+
+
+
+.open {
+    display: initial !important;
+}
+
+.open-nav {
+    min-height: 100vh !important;
+
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    text-align: center;
+
+    flex-direction: column !important;
+}
+
+.open-nav.navbar-nav {
+    background-color: black;
+    padding-top: 50px;
+}
+
+.open-nav.item-third {
+    display:flex !important;
+    justify-content: end;
+
+    padding-bottom: 50px;
+}
+
+.open-nav.bars {
+    position: absolute;
+    top:20px;
+    right: 20px;
+}
+
+
+.search-bar {
+    position: relative
+}
+.search-bar input {
+    padding: 5px 0px 5px 40px !important;
+    width: 200px;
+}
+
+.fa-magnifying-glass {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translate(5px, -50%)
+}
