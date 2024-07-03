@@ -25,8 +25,8 @@
     <x-navigator></x-navigator>
 
     {{-- HEADER --}}
-    <header class="d-flex align-items-center justify-content-center">
-        <div class="container header-content d-flex flex-md-nowrap flex-wrap gap-3">
+    <x-header>
+        <div class="container header-content d-flex flex-lg-nowrap flex-wrap gap-3">
             <div class="text-center">
                 <img src="{{ asset('images/header-banner.jpg') }}" alt="" class="w-100 rounded">
             </div>
@@ -35,13 +35,12 @@
                 <p class="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem quae eligendi eos doloremque ipsum dolores molestias velit dolorum nostrum voluptate.</p>
 
                 <div class="text-uppercase">
-                    <a class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add to wishlist</a>
-                    <a class="btn btn-primary"><i class="fa-solid fa-play"></i> Play trailer</a>
+                    <x-btn-primary><i class="fa-solid fa-plus"></i> Add to wishlist</x-btn-primary>
+                    <x-btn-primary><i class="fa-solid fa-play"></i> Play trailer</x-btn-primary>
                 </div>
-
             </div>
         </div>
-    </header>
+    </x-header>
 
     <main class="py-5">
         <x-section-component>

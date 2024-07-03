@@ -3,7 +3,15 @@
     <x-navigator></x-navigator>
 
     {{-- HEADER --}}
-    <x-header></x-header>
+    <x-header>
+        <div class="container header-content">
+            <div class="">
+                <h1 class="fs-1 fw-bold">Watch movies for <br><span class="accent-color">FREE</span> now</h1>
+                <p class="">The films that we show are not illegal and of course in very good quality.</p>
+                <x-btn-primary>Login</x-btn-primary>
+            </div>
+        </div>
+    </x-header>
 
     {{-- Sponsor --}}
     <div class="container sponsor py-5 d-flex flex-wrap flex-md-nowrap justify-content-around align-items-center gap-5 text-center">
