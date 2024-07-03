@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top py-4">
     <div class="container-fluid px-5 justify-content-between">
-        <a class="logo text-uppercase text-decoration-none" href="#">Mobhie</a>
+        <a class="logo text-uppercase text-decoration-none" href="{{ route('home') }}">Mobhie</a>
 
         <div class="d-lg-flex d-none navbar-parent">
         {{-- <div class=""> --}}

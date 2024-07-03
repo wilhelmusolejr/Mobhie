@@ -49,7 +49,7 @@ Route::get('/', function () {
     return view('welcome', [
         'section_movies' => $sections,
     ]);
-});
+}) -> name('home');
 
 Route::get('/movie/{movie}', function ($movie) {
     $movie_id = $movie;
