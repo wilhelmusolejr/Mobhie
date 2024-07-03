@@ -37,12 +37,24 @@
                 Popular Movies
             </x-section-header>
 
-            <div class="d-flex flex-wrap justify-content-xl-between justify-content-around align-items-center gap-3">
+            <div class="d-flex flex-wrap justify-content-xl-between justify-content-around gap-3">
 
-                <x-movie-card></x-movie-card>
-                <x-movie-card></x-movie-card>
-                <x-movie-card></x-movie-card>
-                <x-movie-card></x-movie-card>
+                @foreach($popular_movies as $movie)
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ 'https://images.tmdb.org/t/p/w500'.$movie['poster_path'] }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="movie-title">{{ $movie['original_title'] }}</h3>
+                            <p class="card-text movie-descriptionn">{{ $movie['overview'] }}</p>
+                            <div class="movie-rate">
+                                @for ($i = 0; $i < 5; $i++)
+                                    @if ($i < $movie['star_rating'])
+                                        <i class="fas fa-star"></i>
+                                    @endif
+                                @endfor
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
 
             </div>
         </x-section-component>
@@ -50,15 +62,55 @@
         <x-section-component>
 
             <x-section-header>
-                Top Series
+                Trending Movies
             </x-section-header>
 
-            <div class="d-flex flex-wrap justify-content-xl-between justify-content-around align-items-center gap-3">
+            <div class="d-flex flex-wrap justify-content-xl-between justify-content-around gap-3">
 
-                <x-movie-card></x-movie-card>
-                <x-movie-card></x-movie-card>
-                <x-movie-card></x-movie-card>
-                <x-movie-card></x-movie-card>
+                @foreach($trending_movies as $movie)
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ 'https://images.tmdb.org/t/p/w500'.$movie['poster_path'] }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="movie-title">{{ $movie['original_title'] }}</h3>
+                            <p class="card-text movie-descriptionn">{{ $movie['overview'] }}</p>
+                            <div class="movie-rate">
+                                @for ($i = 0; $i < 5; $i++)
+                                    @if ($i < $movie['star_rating'])
+                                        <i class="fas fa-star"></i>
+                                    @endif
+                                @endfor
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+        </x-section-component>
+
+        <x-section-component>
+
+            <x-section-header>
+                Top Rated TV Series
+            </x-section-header>
+
+            <div class="d-flex flex-wrap justify-content-xl-between justify-content-around gap-3">
+
+                @foreach($top_rated_movies as $movie)
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ 'https://images.tmdb.org/t/p/w500'.$movie['poster_path'] }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="movie-title">{{ $movie['original_title'] }}</h3>
+                            <p class="card-text movie-descriptionn">{{ $movie['overview'] }}</p>
+                            <div class="movie-rate">
+                                @for ($i = 0; $i < 5; $i++)
+                                    @if ($i < $movie['star_rating'])
+                                        <i class="fas fa-star"></i>
+                                    @endif
+                                @endfor
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
 
             </div>
         </x-section-component>
