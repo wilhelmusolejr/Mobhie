@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <link rel="stylesheet" href="{{ asset('css/movie.css') }}">
-    <script defer src="{{ asset('js/index.js') }}"></script>
+    <script defer src="{{ asset('js/movie.js') }}"></script>
 
 
 </head>
@@ -26,13 +26,15 @@
 
     {{-- HEADER --}}
     <x-header>
-        <div class="container header-content d-flex flex-lg-nowrap flex-wrap gap-3">
+        <a href="#" class="d-none backdrop_link">{{ 'https://images.tmdb.org/t/p/w500'.$movie['backdrop_path'] }}</a>
+
+        <div class="container header-content d-flex flex-lg-nowrap flex-wrap align-items-center gap-3">
             <div class="text-center">
-                <img src="{{ asset('images/header-banner.jpg') }}" alt="" class="w-100 rounded">
+                <img src="{{ 'https://images.tmdb.org/t/p/w500'.$movie['poster_path'] }}" class="rounded" alt="{{ $movie['original_title'] }}">
             </div>
             <div class="">
-                <h1 class="fs-1 fw-bold text-uppercase">Past Lives</h1>
-                <p class="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem quae eligendi eos doloremque ipsum dolores molestias velit dolorum nostrum voluptate.</p>
+                <h1 class="fs-1 fw-bold text-uppercase">{{ $movie['original_title'] }}</h1>
+                <p class="">{{ $movie['overview'] }}</p>
 
                 <div class="text-uppercase">
                     <x-btn-primary><i class="fa-solid fa-plus"></i> Add to wishlist</x-btn-primary>
@@ -42,13 +44,18 @@
         </div>
     </x-header>
 
+    {{-- Sponsor --}}
+    <div class="container sponsor py-5 d-flex flex-wrap flex-md-nowrap justify-content-around align-items-center gap-5 text-center">
+        @foreach ($movie['production_companies'] as $production)
+        <div class="">
+            <img src="{{ 'https://images.tmdb.org/t/p/w500'.$production['logo_path'] }}" alt="{{ $production['name'] }}">
+        </div>
+        @endforeach
+    </div>
+
     <main class="py-5">
-        <x-section-component>
 
-            <x-section-header>
-                Cast
-            </x-section-header>
-
+        <x-section-component header="Cast">
             <div class="d-flex flex-wrap justify-content-xl-start justify-content-around align-items-center gap-3">
 
                 <div class="card" style="width: 18rem;">
@@ -72,6 +79,7 @@
 
             </div>
         </x-section-component>
+
     </main>
 
     <footer class="d-flex justify-content-center align-items-center py-5">

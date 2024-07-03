@@ -1,14 +1,14 @@
-<div class="card" style="width: 18rem;">
-    <img src="{{ asset('images/header-banner.jpg') }}" class="card-img-top" alt="...">
+<a href="movie/{{ $movie['id'] }}" class="card text-decoration-none" style="width: 18rem;">
+    <img src="{{ 'https://images.tmdb.org/t/p/w500'.$movie['poster_path'] }}" class="card-img-top" alt="{{ $movie['original_title'] }}">
     <div class="card-body">
-        <h3 class="movie-title">Birds of the pray</h3>
-        <p class="card-text movie-descriptionn">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h3 class="movie-title">{{ $movie['original_title'] }}</h3>
+        <p class="card-text movie-descriptionn">{{ $movie['overview'] }}</p>
         <div class="movie-rate">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
+            @for ($i = 0; $i < 5; $i++)
+                @if ($i < $movie['star_rating'])
+                    <i class="fas fa-star"></i>
+                @endif
+            @endfor
         </div>
     </div>
-</div>
+</a>

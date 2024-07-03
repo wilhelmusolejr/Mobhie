@@ -37,5 +37,7 @@ return [
 
     'tmdb' => [
         'token' => env('TMDB_TOKEN'),
+        'movie_url' => 'https://api.themoviedb.org/3',
+        'image_url' => 'https://images.tmdb.org/t/p/w500',
     ],
 ];
