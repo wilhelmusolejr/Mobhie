@@ -1,7 +1,19 @@
+@php
+    $movies = $section['movies'];
+    $randomKey = array_rand($movies);
+    $randomMovie = $movies[$randomKey];
+@endphp
+
 <x-layout>
 
     {{-- HEADER --}}
     <x-header class="header-partial">
+        @if ($randomMovie['backdrop_path'])
+            <a href="#" class="d-none backdrop_link">{{ 'https://images.tmdb.org/t/p/w500'.$randomMovie['backdrop_path'] }}</a>
+        @else
+            <a href="#" class="d-none backdrop_link">{{ 'https://images.tmdb.org/t/p/w500'.$randomMovie['poster_path'] }}</a>
+        @endif
+
         <div class="text-center">
             <x-header-title>
                 {{ $section['header'] }}

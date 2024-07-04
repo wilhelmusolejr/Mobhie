@@ -21,7 +21,7 @@
             {{-- <div class=""> --}}
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <form action="{{ route('search') }}" method="get">
-                    <input class="rounded" name='string' type="text" value="inside">
+                    <input class="rounded" name='string' type="text" placeholder="Horror">
                     <input class="rounded" name='page' type="hidden" value="1">
                 </form>
             </div>
@@ -29,12 +29,11 @@
             <div class="user-profile ">
             {{-- <div class="user-profile"> --}}
                 <img src="{{ asset('images/dummy.jpg') }}" class="rounded-circle d-none" alt="">
-                <a class="ms-2 text-decoration-none" href="#">Logout</a>
+                <a class="ms-2 text-decoration-none d-none" href="#">Logout</a>
             </div>
         </div>
 
         <div class="bars text-light d-lg-none d-block z-1">
-            {{-- <div class="bars text-light"> --}}
                 <i class="fa-solid fa-bars"></i>
             </div>
     </div>

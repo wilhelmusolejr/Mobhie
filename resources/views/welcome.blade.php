@@ -7,7 +7,7 @@
                 Watch movies for <br><span class="accent-color">FREE</span> now
             </x-header-title>
             <p class="">The films that we show are not illegal and of course in very good quality.</p>
-            <x-btn-primary>Login</x-btn-primary>
+            {{-- <x-btn-primary>Login</x-btn-primary> --}}
         </div>
     </x-header>
 
