@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <script defer src="{{ asset('js/index.js') }}"></script>
 </head>
-<body>
+<body style="overflow: hidden">
+
+    <x-loader></x-loader>
 
     {{ $slot }}
 

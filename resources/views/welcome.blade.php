@@ -1,4 +1,5 @@
 <x-layout>
+
     {{-- NAVIGATOR --}}
     <x-navigator></x-navigator>
 
