@@ -20,7 +20,10 @@
             <div class="search-bar">
             {{-- <div class=""> --}}
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input class="rounded" type="text">
+                <form action="{{ route('search') }}" method="get">
+                    <input class="rounded" name='string' type="text" value="inside">
+                    <input class="rounded" name='page' type="hidden" value="1">
+                </form>
             </div>
 
             <div class="user-profile ">

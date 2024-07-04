@@ -37,6 +37,14 @@
         <div class="container text-light py-3">
             <h3 class="text-center py-3">" {{ $movie['tagline'] }} "</h3>
 
+            @empty(!$movie['video'])
+            <div class="text-center mb-5">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="{{ $movie['video'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            @endempty
+
             <div class="card my-3">
                 <div class="row no-gutters">
                     <div class="col-md-12">

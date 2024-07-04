@@ -104,13 +104,18 @@ class MovieController extends Controller {
     public function showMovie($movie) {
         $movie_id = $movie;
         $movie_url = 'https://api.themoviedb.org/3/movie/'. $movie_id .'?language=en-US';
-        $video_url = 'https://api.themoviedb.org/3/movie/'. $movie_id .'/similar?language=en-US&page=1';
+        $related_url = 'https://api.themoviedb.org/3/movie/'. $movie_id .'/similar?language=en-US&page=1';
+        $video_url = 'https://api.themoviedb.org/3/movie/'. $movie_id .'/videos?language=en-US';
 
         $response = Http::withToken($this -> tmdb_token)
         ->get($movie_url)
         ->json();
 
         $related = Http::withToken($this -> tmdb_token)
+        ->get($related_url)
+        ->json();
+
+        $video = Http::withToken($this -> tmdb_token)
         ->get($video_url)
         ->json();
 
@@ -119,12 +124,46 @@ class MovieController extends Controller {
         }
 
         $response['related'] = $this -> sliceMovie($related['results'], $this -> movie_limit );
+
+        if (empty($video['results'])) {
+            $response['video'] = [];
+        } else {
+            $response['video'] = 'https://www.youtube.com/embed/'.$video['results'][0]['key'];
+        }
+
         $this -> concatMovie($response['related']);
 
-        // dd($response);
 
         return view('movie', [
             'movie' => $response
+        ]);
+    }
+
+    public function search(Request $request) {
+        $string = $request->input('string');
+        $pageNumber = $request->input('page');
+
+        $search_url = "https://api.themoviedb.org/3/search/movie?query=".$string."&include_adult=false&language=en-US&page=$pageNumber";
+
+        $response = Http::withToken($this->tmdb_token)
+            ->get($search_url)
+            ->json();
+
+        $response['header'] = $string;
+
+        $response['endpoint'] = request()->getRequestUri();
+        $position = strrpos($response['endpoint'], '=');
+        $cleanedUrl = substr($response['endpoint'], 0, $position + 1);
+
+        $section_copy['current_page'] = $pageNumber;
+        $response['previous_url'] = $pageNumber > 1 ? $cleanedUrl . '' . ($pageNumber - 1) : null;
+        $response['next_url'] = $cleanedUrl.''.$pageNumber + 1;
+
+        $response['movies'] = $response['results'];
+        $this -> concatMovie($response['movies']);
+
+        return view('list-movie', [
+            'section' => $response,
         ]);
     }
 
