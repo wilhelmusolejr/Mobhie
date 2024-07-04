@@ -7,7 +7,7 @@
 <x-layout>
 
     {{-- HEADER --}}
-    <x-header class="header-partial">
+    <x-header class="header-partial header-semi-dark">
         @if ($randomMovie['backdrop_path'])
             <a href="#" class="d-none backdrop_link">{{ 'https://images.tmdb.org/t/p/w500'.$randomMovie['backdrop_path'] }}</a>
         @else

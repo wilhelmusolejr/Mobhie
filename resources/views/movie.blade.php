@@ -1,6 +1,6 @@
 <x-layout>
     {{-- HEADER --}}
-    <x-header class="header-full">
+    <x-header class="header-full header-dark">
         @if ($movie['backdrop_path'])
             <a href="#" class="d-none backdrop_link">{{ 'https://images.tmdb.org/t/p/w500'.$movie['backdrop_path'] }}</a>
         @else

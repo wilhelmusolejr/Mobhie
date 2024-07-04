@@ -57,10 +57,19 @@ header.header-partial {
     min-height: 25vh; /* Set the height of the header */
 }
 
-header {
+header.header-semi-dark {
     background: linear-gradient(to bottom, rgba(0, 0, 0, .60) 25%, rgba(0, 0, 0, 0) 100%),
                 linear-gradient(to bottom right, rgba(0, 0, 0, .60) 25%, rgba(0, 0, 0, 0) 100%),
-                url('../images/header-banner.jpg'); /* Replace with your image path */
+                url('../images/header-banner.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+header.header-dark {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .60) 25%, rgba(0, 0, 0, 0) 100%),
+                linear-gradient(to bottom right, rgba(0, 0, 0, .60) 25%, rgba(0, 0, 0, 0.80) 100%),
+                url('../images/header-banner.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
