@@ -6,13 +6,13 @@
         {{-- <div class=""> --}}
             <ul class="navbar-nav d-flex flex-row gap-3">
               <li class="nav-item">
-                <a class="nav-link active" href="/">Home</a>
+                <a class="nav-link active" href="{{ route('popular', 'page=1') }}">Popular</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="{{ route('trending', 'page=1') }}">Trending</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="{{ route('toprated', 'page=1') }}">Top Rated</a>
               </li>
             </ul>
         </div>
