@@ -121,6 +121,8 @@ class MovieController extends Controller {
         $response['related'] = $this -> sliceMovie($related['results'], $this -> movie_limit );
         $this -> concatMovie($response['related']);
 
+        // dd($response);
+
         return view('movie', [
             'movie' => $response
         ]);

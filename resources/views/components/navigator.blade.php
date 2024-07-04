@@ -3,17 +3,16 @@
         <a class="logo text-uppercase text-decoration-none" href="{{ route('home') }}">Mobhie</a>
 
         <div class="d-lg-flex d-none navbar-parent">
-        {{-- <div class=""> --}}
             <ul class="navbar-nav d-flex flex-row gap-3">
-              <li class="nav-item">
-                <a class="nav-link active" href="{{ route('popular', 'page=1') }}">Popular</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('trending', 'page=1') }}">Trending</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('toprated', 'page=1') }}">Top Rated</a>
-              </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('popular') ? 'active' : '' }}" href="{{ route('popular', 'page=1') }}">Popular</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('trending') ? 'active' : '' }}" href="{{ route('trending', 'page=1') }}">Trending</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('toprated') ? 'active' : '' }}" href="{{ route('toprated', 'page=1') }}">Top Rated</a>
+                </li>
             </ul>
         </div>
 

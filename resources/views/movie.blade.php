@@ -99,14 +99,16 @@
 
         </div>
 
+        @empty(!$movie['related'])
         <x-section-component
-                header="Similar movies"
-                endpoint="{{ 'xx' }}"
-                :headerhide="false" >
-                    @foreach($movie['related'] as $movie)
-                        <x-movie-card :movie="$movie" />
-                    @endforeach
-            </x-section-component>
+            header="Similar movies"
+            endpoint="{{ 'xx' }}"
+            :headerhide="false" >
+                @foreach($movie['related'] as $movie)
+                    <x-movie-card :movie="$movie" />
+                @endforeach
+        </x-section-component>
+        @endempty
 
     </main>
 </x-layout>
