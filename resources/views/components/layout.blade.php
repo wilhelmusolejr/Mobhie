@@ -15,15 +15,21 @@
 
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <script defer src="{{ asset('js/index.js') }}"></script>
+
+    <link rel="stylesheet" href="{{ asset('css/movie.css') }}">
+    <script defer src="{{ asset('js/movie.js') }}"></script>
 </head>
 <body style="overflow: hidden">
 
     <x-loader></x-loader>
 
+    {{-- NAVIGATOR --}}
+    <x-navigator></x-navigator>
+
     {{ $slot }}
 
     <footer class="d-flex justify-content-center align-items-center py-5">
-        <a class="logo text-uppercase text-decoration-none bg-dark p-3 rounded" href="#">Mobhie</a>
+        <a class="logo text-uppercase text-decoration-none bg-dark p-3 rounded" href="{{ route('home') }}">Mobhie</a>
     </footer>
 </body>
 </html>

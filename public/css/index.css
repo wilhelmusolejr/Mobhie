@@ -49,17 +49,33 @@ nav .active {
     height: 50px;
 }
 
+
+header.header-full {
+    min-height: 100vh; /* Set the height of the header */
+}
+header.header-partial {
+    min-height: 25vh; /* Set the height of the header */
+}
+
 header {
     background: linear-gradient(to bottom, rgba(0, 0, 0, .60) 25%, rgba(0, 0, 0, 0) 100%),
                 linear-gradient(to bottom right, rgba(0, 0, 0, .60) 25%, rgba(0, 0, 0, 0) 100%),
                 url('../images/header-banner.jpg'); /* Replace with your image path */
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover; /* Adjust the size to cover the entire header */
-    min-height: 100vh; /* Set the height of the header */
-    color: white; /* Optional: Set the text color for better contrast */
-    position: relative; /* Ensure it's positioned relative for child elements */
+    background-size: cover;
+    color: white;
 }
+
+.header-full .header-content {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+.header-partial .header-content {
+    margin-top: 20vh;
+    margin-bottom: 10vh;
+}
+
 
 .sponsor > div {
     width: 40%;
@@ -164,10 +180,6 @@ footer {
 
 
 
-.header-content {
-    margin-top: 20vh;
-    margin-bottom: 20vh;
-}
 
 .movie-poster img {
     width: 30vh;

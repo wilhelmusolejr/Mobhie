@@ -11,6 +11,4 @@ url(${backdrop_link})`;
 header.style.backgroundPosition = "center";
 header.style.backgroundRepeat = "no-repeat";
 header.style.backgroundSize = "cover";
-header.style.minHeight = "100vh";
 header.style.color = "white";
-header.style.position = "relative";
