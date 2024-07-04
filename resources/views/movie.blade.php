@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <link rel="stylesheet" href="{{ asset('css/movie.css') }}">
     <script defer src="{{ asset('js/movie.js') }}"></script>
-
+    <script defer src="{{ asset('js/index.js') }}"></script>
 
 </head>
 <body>
@@ -29,8 +29,8 @@
         <a href="#" class="d-none backdrop_link">{{ 'https://images.tmdb.org/t/p/w500'.$movie['backdrop_path'] }}</a>
 
         <div class="container header-content d-flex flex-lg-nowrap flex-wrap align-items-center gap-3">
-            <div class="text-center">
-                <img src="{{ 'https://images.tmdb.org/t/p/w500'.$movie['poster_path'] }}" class="rounded" alt="{{ $movie['original_title'] }}">
+            <div class="text-center movie-poster w-100">
+                <img src="{{ 'https://images.tmdb.org/t/p/w500'.$movie['poster_path'] }}" class="rounded text-center" alt="{{ $movie['original_title'] }}">
             </div>
             <div class="">
                 <h1 class="fs-1 fw-bold text-uppercase">{{ $movie['original_title'] }}</h1>
@@ -55,30 +55,92 @@
 
     <main class="py-5">
 
-        <x-section-component header="Cast">
-            <div class="d-flex flex-wrap justify-content-xl-start justify-content-around align-items-center gap-3">
+        <div class="container text-light py-3">
+            <h3 class="text-center py-3">" {{ $movie['tagline'] }} "</h3>
 
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('images/header-banner.jpg') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h3 class="movie-title">Birds of the pray</h3>
+            <div class="card my-3">
+                <div class="row no-gutters">
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <h5 class="card-title">Bad Boys: Ride or Die</h5>
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th scope="row">Tagline</th>
+                                    <td>{{ $movie['tagline'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Overview</th>
+                                    <td>{{ $movie['overview'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Release Date</th>
+                                    <td>{{ $movie['release_date'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Runtime</th>
+                                    <td>{{ $movie['runtime'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Genres</th>
+                                    @php
+                                        $gen = '';
+                                    @endphp
+                                    @foreach ($movie['genres'] as $genre)
+                                        @php
+                                            $gen .= $genre['name'] . ', ';
+                                        @endphp
+                                    @endforeach
+                                    <td>{{ rtrim($gen, ', ') }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Production Companies</th>
+                                    @php
+                                        $gen = '';
+                                    @endphp
+                                    @foreach ($movie['production_companies'] as $genre)
+                                        @php
+                                            $gen .= $genre['name'] . ', ';
+                                        @endphp
+                                    @endforeach
+                                    <td>{{ rtrim($gen, ', ') }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Production Countries</th>
+                                    @php
+                                        $gen = '';
+                                    @endphp
+                                    @foreach ($movie['production_countries'] as $genre)
+                                        @php
+                                            $gen .= $genre['name'] . ', ';
+                                        @endphp
+                                    @endforeach
+                                    <td>{{ rtrim($gen, ', ') }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Vote Average</th>
+                                    <td>{{ $movie['vote_average'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Vote Count</th>
+                                    <td>{{ $movie['vote_count'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Popularity</th>
+                                    <td>{{ $movie['popularity'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Homepage</th>
+                                    <td><a target="_blank" href="{{ $movie['homepage'] }}">{{ $movie['homepage'] }}</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('images/header-banner.jpg') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h3 class="movie-title">Birds of the pray</h3>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('images/header-banner.jpg') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h3 class="movie-title">Birds of the pray</h3>
-                    </div>
-                </div>
-
             </div>
-        </x-section-component>
+
+        </div>
 
     </main>
 

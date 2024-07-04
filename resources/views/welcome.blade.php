@@ -32,7 +32,7 @@
     <main class="py-5">
 
         @foreach ($section_movies as $section)
-            <x-section-component header="{{ $section['header'] }}">
+            <x-section-component header="{{ $section['header'] }}" endpoint="{{ $section['endpoint'] }}">
                 @foreach($section['movies'] as $movie)
                     <x-movie-card :movie="$movie" />
                 @endforeach

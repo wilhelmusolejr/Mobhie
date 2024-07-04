@@ -56,7 +56,7 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; /* Adjust the size to cover the entire header */
-    height: 100vh; /* Set the height of the header */
+    min-height: 100vh; /* Set the height of the header */
     color: white; /* Optional: Set the text color for better contrast */
     position: relative; /* Ensure it's positioned relative for child elements */
 }
@@ -67,6 +67,7 @@ header {
 
 .sponsor img {
     width: 50%;
+    max-width: 200px;
 }
 
 .btn-primary {
@@ -158,4 +159,17 @@ footer {
     top: 50%;
     left: 5px;
     transform: translate(5px, -50%)
+}
+
+
+
+
+.header-content {
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+}
+
+.movie-poster img {
+    width: 30vh;
+    max-width: 500px;
 }

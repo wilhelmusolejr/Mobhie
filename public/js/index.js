@@ -25,4 +25,3 @@ navBarIcon.addEventListener("click", function(e) {
     navItem.classList.toggle('open-nav')
     navThird.classList.toggle('open-nav')
 })
-

@@ -4,7 +4,7 @@
             {{ $header }}
         </x-section-header>
 
-        <a href="#" class="text-light text-uppercase text-decoration-none btn btn-primary">See more <i class="fa-solid fa-angles-right text-danger"></i></a>
+        <a href="{{ $endpoint }}" class="text-light text-uppercase text-decoration-none btn btn-primary">See more <i class="fa-solid fa-angles-right text-danger"></i></a>
     </div>
 
     <div class="d-flex flex-wrap justify-content-xl-between justify-content-around gap-3">
