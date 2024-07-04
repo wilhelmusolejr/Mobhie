@@ -43,6 +43,7 @@ class MovieController extends Controller {
 
         foreach ($section_copy as $key => &$section) {
             $section['movies'] = $this->fetchMovies($section['url'], $this->movie_limit);
+            $this -> concatMovie($section['movies']);
         }
 
         return view('welcome', [
@@ -52,52 +53,31 @@ class MovieController extends Controller {
 
     public function toprated($page) {
         $target = 'top_rated';
-        $pageNumber = substr($page, strpos($page, '=') + 1);
 
-        $section_copy = $this-> getSection($target, $pageNumber);
-        $section_copy['movies'] = $this->fetchMovies($section_copy['url']);
-        $cleanedUrl = substr($section_copy['endpoint'], 0, strpos($section_copy['endpoint'], '='));
-
-        $section_copy['current_page'] = $pageNumber;
-        $section_copy['previous_url'] = $pageNumber > 1 ? $cleanedUrl . '=' . ($pageNumber - 1) : null;
-        $section_copy['next_url'] = $cleanedUrl.'='.$pageNumber + 1;
+        $response = $this -> list_init($target, $page);
 
         return view('list-movie', [
-            'section' => $section_copy,
+            'section' => $response,
         ]);
     }
 
     public function trending($page) {
         $target = 'trending';
-        $pageNumber = substr($page, strpos($page, '=') + 1);
 
-        $section_copy = $this-> getSection($target, $pageNumber);
-        $section_copy['movies'] = $this->fetchMovies($section_copy['url']);
-        $cleanedUrl = substr($section_copy['endpoint'], 0, strpos($section_copy['endpoint'], '='));
-
-        $section_copy['current_page'] = $pageNumber;
-        $section_copy['previous_url'] = $pageNumber > 1 ? $cleanedUrl . '=' . ($pageNumber - 1) : null;
-        $section_copy['next_url'] = $cleanedUrl.'='.$pageNumber + 1;
+        $response = $this -> list_init($target, $page);
 
         return view('list-movie', [
-            'section' => $section_copy,
+            'section' => $response,
         ]);
     }
 
     public function popular($page) {
         $target = 'popular';
-        $pageNumber = substr($page, strpos($page, '=') + 1);
 
-        $section_copy = $this-> getSection($target, $pageNumber);
-        $section_copy['movies'] = $this->fetchMovies($section_copy['url']);
-        $cleanedUrl = substr($section_copy['endpoint'], 0, strpos($section_copy['endpoint'], '='));
-
-        $section_copy['current_page'] = $pageNumber;
-        $section_copy['previous_url'] = $pageNumber > 1 ? $cleanedUrl . '=' . ($pageNumber - 1) : null;
-        $section_copy['next_url'] = $cleanedUrl.'='.$pageNumber + 1;
+        $response = $this -> list_init($target, $page);
 
         return view('list-movie', [
-            'section' => $section_copy,
+            'section' => $response,
         ]);
     }
 
@@ -140,26 +120,24 @@ class MovieController extends Controller {
     }
 
     public function search(Request $request) {
+        $response = [];
+
         $string = $request->input('string');
         $pageNumber = $request->input('page');
 
-        $search_url = "https://api.themoviedb.org/3/search/movie?query=".$string."&include_adult=false&language=en-US&page=$pageNumber";
+        $search_url = "/search/movie?query=".$string."&include_adult=false&language=en-US&page=$pageNumber";
 
-        $response = Http::withToken($this->tmdb_token)
-            ->get($search_url)
-            ->json();
-
+        $response['movies'] = $this -> fetchMovies($search_url, $limit = 0);
         $response['header'] = $string;
 
         $response['endpoint'] = request()->getRequestUri();
         $position = strrpos($response['endpoint'], '=');
         $cleanedUrl = substr($response['endpoint'], 0, $position + 1);
 
-        $section_copy['current_page'] = $pageNumber;
+        $response['current_page'] = $pageNumber;
         $response['previous_url'] = $pageNumber > 1 ? $cleanedUrl . '' . ($pageNumber - 1) : null;
         $response['next_url'] = $cleanedUrl.''.$pageNumber + 1;
 
-        $response['movies'] = $response['results'];
         $this -> concatMovie($response['movies']);
 
         return view('list-movie', [
@@ -173,18 +151,37 @@ class MovieController extends Controller {
             ->json();
 
         $movies = $response['results'];
-        if ($limit != 0) {
-            $movies = $this -> sliceMovie($movies, $this -> movie_limit);
-        }
 
-        $this -> concatMovie($movies);
+        if ($limit != 0) {
+            $movies = $this -> sliceMovie($response['results'], $this -> movie_limit);
+        }
 
         return $movies;
     }
 
+    private function generatePageLink($response) {
+        $cleanedUrl = substr($response['endpoint'], 0, strpos($response['endpoint'], '='));
+        return [$response['current_page'] > 1 ? $cleanedUrl . '=' . ($response['current_page'] - 1) : null, $cleanedUrl.'='.$response['current_page'] + 1];
+    }
+
     private function sliceMovie($movies, $limit) {
-        $movies = array_slice($movies, 0, $limit);
-        return $movies;
+        return array_slice($movies, 0, $limit);
+    }
+
+    private function list_init($target, $page) {
+        $pageNumber = substr($page, strpos($page, '=') + 1);
+
+        $response = $this-> getSection($target, $pageNumber);
+        $response['movies'] = $this->fetchMovies($response['url']);
+        $response['current_page'] = $pageNumber;
+
+        $pagination_link = $this -> generatePageLink($response);
+        $response['previous_url'] = $pagination_link[0];
+        $response['next_url'] = $pagination_link[1];
+
+        $this -> concatMovie($response['movies']);
+
+        return $response;
     }
 
     private function concatMovie(&$movies) {
