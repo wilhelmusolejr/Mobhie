@@ -103,11 +103,23 @@ class MovieController extends Controller {
 
     public function showMovie($movie) {
         $movie_id = $movie;
-        $movie_id = 'https://api.themoviedb.org/3/movie/'.$movie_id.'?language=en-US';
+        $movie_url = 'https://api.themoviedb.org/3/movie/'. $movie_id .'?language=en-US';
+        $video_url = 'https://api.themoviedb.org/3/movie/'. $movie_id .'/similar?language=en-US&page=1';
 
         $response = Http::withToken($this -> tmdb_token)
-        ->get($movie_id)
+        ->get($movie_url)
         ->json();
+
+        $related = Http::withToken($this -> tmdb_token)
+        ->get($video_url)
+        ->json();
+
+        if (isset($response['status_code']) && $response['status_code'] == 34) {
+            abort(404, $response['status_message']);
+        }
+
+        $response['related'] = $this -> sliceMovie($related['results'], $this -> movie_limit );
+        $this -> concatMovie($response['related']);
 
         return view('movie', [
             'movie' => $response
@@ -120,17 +132,26 @@ class MovieController extends Controller {
             ->json();
 
         $movies = $response['results'];
-        if($limit != 0) {
-            $movies = array_slice($response['results'], 0, $limit);
+        if ($limit != 0) {
+            $movies = $this -> sliceMovie($movies, $this -> movie_limit);
         }
 
+        $this -> concatMovie($movies);
+
+        return $movies;
+    }
+
+    private function sliceMovie($movies, $limit) {
+        $movies = array_slice($movies, 0, $limit);
+        return $movies;
+    }
+
+    private function concatMovie(&$movies) {
         foreach ($movies as &$movie) {
             $movie['star_rating'] = floor($movie['vote_average'] / 2);
             $movie['original_title'] = substr($movie['original_title'] ?? $movie['original_name'], 0, $this->title_limit) . (strlen($movie['original_title'] ?? $movie['original_name']) > $this->title_limit ? '...' : '');
             $movie['overview'] = substr($movie['overview'], 0, $this->description_limit) . (strlen($movie['overview']) > $this->description_limit ? '...' : '');
         }
-
-        return $movies;
     }
 
     private function getSection($target, $page) {

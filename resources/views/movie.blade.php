@@ -1,7 +1,11 @@
 <x-layout>
     {{-- HEADER --}}
     <x-header class="header-full">
-        <a href="#" class="d-none backdrop_link">{{ 'https://images.tmdb.org/t/p/w500'.$movie['backdrop_path'] }}</a>
+        @if ($movie['backdrop_path'])
+            <a href="#" class="d-none backdrop_link">{{ 'https://images.tmdb.org/t/p/w500'.$movie['backdrop_path'] }}</a>
+        @else
+            <a href="#" class="d-none backdrop_link">{{ 'https://images.tmdb.org/t/p/w500'.$movie['poster_path'] }}</a>
+        @endif
 
         <div class="container header-content d-flex flex-lg-nowrap flex-wrap align-items-center gap-3">
             <div class="text-center movie-poster w-100">
@@ -37,7 +41,7 @@
                 <div class="row no-gutters">
                     <div class="col-md-12">
                         <div class="card-body">
-                            <h5 class="card-title">Bad Boys: Ride or Die</h5>
+                            <h5 class="card-title">{{ $movie['original_title'] }}</h5>
                             <div style="max-height: 500px; overflow-y: auto;">
                                 <table class="table table-striped">
                                     <tbody>
@@ -93,8 +97,16 @@
                 </div>
             </div>
 
-
         </div>
+
+        <x-section-component
+                header="Similar movies"
+                endpoint="{{ 'xx' }}"
+                :headerhide="false" >
+                    @foreach($movie['related'] as $movie)
+                        <x-movie-card :movie="$movie" />
+                    @endforeach
+            </x-section-component>
 
     </main>
 </x-layout>
