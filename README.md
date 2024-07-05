@@ -43,7 +43,7 @@ I welcome contributions of all kinds from the community. If you're interested in
 
 ## Screenshot
 <div align="center">
-  <img src="public/images/screenshot1.png">
+  <img src="public/images/screenshot1.PNG">
   <p>Randomizer Feature</p>
 </div>
 <br>
