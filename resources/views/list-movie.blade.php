@@ -6,6 +6,8 @@
 
 <x-layout>
 
+    @section('title', "MOBHIE | ".$section['header'])
+
     {{-- HEADER --}}
     <x-header class="header-partial header-semi-dark">
         @if ($randomMovie['backdrop_path'])

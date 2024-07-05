@@ -1,4 +1,6 @@
 <x-layout>
+    @section('title', "MOBHIE | ".$movie['original_title'])
+
     {{-- HEADER --}}
     <x-header class="header-full header-dark">
         @if ($movie['backdrop_path'])

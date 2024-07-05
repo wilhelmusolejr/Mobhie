@@ -5,7 +5,7 @@
 @endphp
 
 <x-layout>
-
+    @section('title', 'MOBHIE | Home')
 
     {{-- HEADER --}}
     <x-header class="header-full header-semi-dark">
@@ -41,12 +41,11 @@
     </div>
 
     <main class="py-5">
-
         @foreach ($section_movies as $section)
             <x-section-component
                 header="{{ $section['header'] }}"
                 endpoint="{{ $section['endpoint'] }}"
-                :headerhide="false" >
+                :headerhide="false">
                     @foreach($section['movies'] as $movie)
                         <x-movie-card :movie="$movie" />
                     @endforeach
@@ -55,7 +54,6 @@
         @endforeach
 
         <div class="container-md container-fluid my-5 py-5 randomize-parent">
-
             @php
                 $totalSections = count($section_movies);
             @endphp
@@ -73,7 +71,6 @@
                     @endphp
 
                     <div class="p-3 card d-flex flex-md-row gap-3 randomize {{ $isEnd ? 'active' : 'd-none' }}">
-
                         @if ($movie['backdrop_path'])
                             <a href="#" class="d-none backdrop_link">{{ 'https://images.tmdb.org/t/p/w500'.$movie['backdrop_path'] }}</a>
                         @else
@@ -96,7 +93,6 @@
                             </div>
                             <a href="{{ route('movie.show', $movie['id']) }}" class="btn btn-primary align-self-start">Learn More</a>
                         </div>
-
                     </div>
                 @endforeach
             @endforeach
@@ -104,5 +100,4 @@
             <a href="#" class="btn btn-primary btn-randomize text-dark align-self-center mt-auto">Randomize</a>
         </div>
     </main>
-
 </x-layout>

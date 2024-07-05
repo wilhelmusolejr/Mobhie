@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>XXX</title>
+    <title>@yield('title', 'Default Title')</title>
 
     {{-- Font awesome --}}
     <script defer src="https://kit.fontawesome.com/6b2bcc8033.js" crossorigin="anonymous"></script>
