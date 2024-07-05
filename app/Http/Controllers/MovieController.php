@@ -43,6 +43,7 @@ class MovieController extends Controller {
 
         foreach ($section_copy as $key => &$section) {
             $section['movies'] = $this->fetchMovies($section['url'], $this->movie_limit);
+            // dd($section['movies']);
             $this -> concatMovie($section['movies']);
         }
 
@@ -179,6 +180,8 @@ class MovieController extends Controller {
         $response['previous_url'] = $pagination_link[0];
         $response['next_url'] = $pagination_link[1];
 
+        // dd($response);
+
         $this -> concatMovie($response['movies']);
 
         return $response;
@@ -186,8 +189,30 @@ class MovieController extends Controller {
 
     private function concatMovie(&$movies) {
         foreach ($movies as &$movie) {
+
+            // Ensure 'title' key exists before accessing
+            if (isset($movie['title'])) {
+                $movie['full_title'] = $movie['title'];
+            } else {
+                $movie['full_title'] = '';  // or some default value
+            }
+
+            if (isset($movie['original_title'])) {
+                $movie['full_title'] = $movie['original_title'];
+            } else {
+                $movie['full_title'] = '';  // or some default value
+            }
+
+            if (isset($movie['original_name'])) {
+                $movie['full_title'] = $movie['original_name'];
+            } else {
+                $movie['full_title'] = '';  // or some default value
+            }
+
+            // Other modifications as needed
+            $movie['full_overview'] = $movie['overview'];
             $movie['star_rating'] = floor($movie['vote_average'] / 2);
-            $movie['original_title'] = substr($movie['original_title'] ?? $movie['original_name'], 0, $this->title_limit) . (strlen($movie['original_title'] ?? $movie['original_name']) > $this->title_limit ? '...' : '');
+            $movie['original_title'] = substr($movie['original_title'] ?? $movie['original_name'] ?? '', 0, $this->title_limit) . (strlen($movie['original_title'] ?? $movie['original_name'] ?? '') > $this->title_limit ? '...' : '');
             $movie['overview'] = substr($movie['overview'], 0, $this->description_limit) . (strlen($movie['overview']) > $this->description_limit ? '...' : '');
         }
     }
