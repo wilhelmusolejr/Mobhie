@@ -270,6 +270,7 @@ footer {
 
 .movie.card {
     width: 80% !important;
+    margin-bottom: 1rem;
 }
 
 .movie.card img {
