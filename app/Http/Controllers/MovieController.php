@@ -10,7 +10,7 @@ class MovieController extends Controller {
     private $tmdb_token;
     private $movie_url;
     private $description_limit = 50;
-    private $title_limit = 10;
+    private $title_limit = 15;
     private $movie_limit = 4;
     private $sections = [
         'popular' => [
