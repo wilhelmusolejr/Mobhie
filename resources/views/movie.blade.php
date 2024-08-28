@@ -17,7 +17,7 @@
                 <h1 class="fs-1 fw-bold text-uppercase">{{ $movie['original_title'] }}</h1>
                 <p class="">{{ $movie['overview'] }}</p>
 
-                <div class="text-uppercase">
+                <div class="text-uppercase d-flex flex-wrap gap-2 my-3">
                     <x-btn-primary><i class="fa-solid fa-plus"></i> Add to wishlist</x-btn-primary>
                     <x-btn-primary><i class="fa-solid fa-play"></i> Play trailer</x-btn-primary>
                 </div>
