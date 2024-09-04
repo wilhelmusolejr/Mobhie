@@ -23,7 +23,72 @@
         "VIEW_COMPILED_PATH": "/tmp",
 
         "CACHE_DRIVER": "array",
-        "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie"
+        "LOG_CHANNEL": "stack",
+        "SESSION_DRIVER": "database",
+
+        "SOCIAL_GITHUB": "https://github.com/wilhelmusolejr",
+        "SOCIAL_PROJECT_INFORMATION": "https://wilhelmus.dev/project/mobhie",
+        "SOCIAL_PORTFOLIO": "https://wilhelmus.dev",
+
+        "APP_KEY": "base64:xS4Ey92XbaXl5uo/SC746hKpKN4OCF8cCmebpAbSv38=",
+        "APP_TIMEZONE": "UTC",
+
+        "APP_LOCALE": "en",
+        "APP_FALLBACK_LOCALE": "en",
+        "APP_FAKER_LOCALE": "en_US",
+
+        "APP_MAINTENANCE_DRIVER": "file",
+        "APP_MAINTENANCE_STORE": "database",
+
+        "BCRYPT_ROUNDS": 12,
+
+        "LOG_STACK": "single",
+        "LOG_DEPRECATIONS_CHANNEL": null,
+        "LOG_LEVEL": "debug",
+
+        "DB_CONNECTION": "pgsql",
+        "DB_HOST": "127.0.0.1",
+        "DB_PORT": 5432,
+        "DB_DATABASE": "mobhie",
+        "DB_USERNAME": "postgres",
+        "DB_PASSWORD": "r00t",
+
+        "SESSION_LIFETIME": 120,
+        "SESSION_ENCRYPT": false,
+        "SESSION_PATH": "/",
+        "SESSION_DOMAIN": null,
+
+        "BROADCAST_CONNECTION": "log",
+        "FILESYSTEM_DISK": "local",
+        "QUEUE_CONNECTION": "database",
+
+        "CACHE_STORE": "database",
+        "CACHE_PREFIX": "",
+
+        "MEMCACHED_HOST": "127.0.0.1",
+
+        "REDIS_CLIENT": "phpredis",
+        "REDIS_HOST": "127.0.0.1",
+        "REDIS_PASSWORD": null,
+        "REDIS_PORT": 6379,
+
+        "MAIL_MAILER": "log",
+        "MAIL_HOST": "127.0.0.1",
+        "MAIL_PORT": 2525,
+        "MAIL_USERNAME": null,
+        "MAIL_PASSWORD": null,
+        "MAIL_ENCRYPTION": null,
+        "MAIL_FROM_ADDRESS": "hello@example.com",
+        "MAIL_FROM_NAME": "Laravel",
+
+        "AWS_ACCESS_KEY_ID": "",
+        "AWS_SECRET_ACCESS_KEY": "",
+        "AWS_DEFAULT_REGION": "us-east-1",
+        "AWS_BUCKET": "",
+        "AWS_USE_PATH_STYLE_ENDPOINT": false,
+
+        "VITE_APP_NAME": "Laravel",
+
+        "TMDB_TOKEN": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZjQ2OWM4ZjgyNTY0MmRlZjRlZGQ3NjIyMmU5Mjg3YSIsIm5iZiI6MTcxOTk4ODExMC4zMjE3MjUsInN1YiI6IjYwZTk0NGY4OTk3OWQyMDA3Mzk3ZmVhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.w0Bev2RcP7d22xVppZfpJWIHb0wNjesJgLb5FNxL7ck"
     }
 }
