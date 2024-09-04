@@ -128,6 +128,5 @@ return [
         'portfolio' => env('SOCIAL_PORTFOLIO', '#'),
         'github' => env('SOCIAL_GITHUB', '#'),
         'project_information' => env('SOCIAL_PROJECT_INFORMATION', '#'),
-    ]
-
+    ],
 ];
