@@ -21,6 +21,8 @@
 </head>
 <body style="overflow: hidden">
 
+
+
     <x-loader></x-loader>
 
     {{-- NAVIGATOR --}}
@@ -28,8 +30,25 @@
 
     {{ $slot }}
 
-    <footer class="d-flex justify-content-center align-items-center py-5">
-        <a class="logo text-uppercase text-decoration-none bg-dark p-3 rounded" href="{{ route('home') }}">Mobhie</a>
+    <footer class="">
+        <div class="container d-flex justify-content-between align-items-center flex-wrap py-5 gap-5 ">
+            <div class="">
+                <a class="logo text-uppercase text-decoration-none bg-dark p-3 rounded" href="{{ route('home') }}">Mobhie</a>
+            </div>
+
+            <?php
+            $portfolio_url = config('app.socials.portfolio');
+            $github_url = config('app.socials.github');
+            $project_url = config('app.socials.project_information');
+            ?>
+
+
+            <div class="d-flex flex-wrap flex-column flex-md-row gap-3">
+                <a class="text-decoration-none text-light" target="_blank" href={{ $portfolio_url }}>Portfolio</a>
+                <a class="text-decoration-none text-light" target="_blank" href={{ $project_url }}>Project Information</a>
+                <a class="text-decoration-none text-light" target="_blank" href={{ $github_url }}>GitHub</a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

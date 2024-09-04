@@ -165,6 +165,10 @@ footer {
     border-top: 7px solid var(--accent-color);
 }
 
+footer a:hover {
+    color: var(--accent-color) !important;
+}
+
 .open {
     display: initial !important;
 }

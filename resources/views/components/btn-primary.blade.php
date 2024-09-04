@@ -1,1 +1,3 @@
-<a class="btn btn-primary">{{ $slot }}</a>
+<a href="#" class="btn btn-primary">
+    {{ $slot }}
+</a>

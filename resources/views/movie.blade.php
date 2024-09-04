@@ -19,7 +19,9 @@
 
                 <div class="text-uppercase d-flex flex-wrap gap-2 my-3">
                     <x-btn-primary><i class="fa-solid fa-plus"></i> Add to wishlist</x-btn-primary>
-                    <x-btn-primary><i class="fa-solid fa-play"></i> Play trailer</x-btn-primary>
+                    <a href={{ $movie['video'] }} class="btn btn-primary">
+                        <i class="fa-solid fa-play"></i> Play trailer
+                    </a>
                 </div>
             </div>
         </div>
