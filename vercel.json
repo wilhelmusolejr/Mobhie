@@ -20,23 +20,6 @@
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
         "APP_ROUTES_CACHE": "/tmp/routes.php",
         "APP_SERVICES_CACHE": "/tmp/services.php",
-        "VIEW_COMPILED_PATH": "/tmp",
-
-        "CACHE_DRIVER": "array",
-        "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "database",
-
-        "SOCIAL_GITHUB": "https://github.com/wilhelmusolejr",
-        "SOCIAL_PROJECT_INFORMATION": "https://wilhelmus.dev/project/mobhie",
-        "SOCIAL_PORTFOLIO": "https://wilhelmus.dev",
-
-        "APP_KEY": "base64:xS4Ey92XbaXl5uo/SC746hKpKN4OCF8cCmebpAbSv38=",
-        "APP_TIMEZONE": "UTC",
-
-        "MEMCACHED_HOST": "127.0.0.1",
-
-        "VITE_APP_NAME": "Laravel",
-
-        "TMDB_TOKEN": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZjQ2OWM4ZjgyNTY0MmRlZjRlZGQ3NjIyMmU5Mjg3YSIsIm5iZiI6MTcxOTk4ODExMC4zMjE3MjUsInN1YiI6IjYwZTk0NGY4OTk3OWQyMDA3Mzk3ZmVhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.w0Bev2RcP7d22xVppZfpJWIHb0wNjesJgLb5FNxL7ck"
+        "VIEW_COMPILED_PATH": "/tmp"
     }
 }
